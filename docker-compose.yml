@@ -1,0 +1,27 @@
+version: "3.2"
+
+services:
+  prometheus_service:
+    build:
+        context: ./logger
+    image: prometheus_service
+    container_name: prometheus_service
+    #networks:
+    #  - samurai
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana
+    container_name: test_grafana
+    ports:
+          - 3000:3000
+    #networks:
+    #  - samurai
+    depends_on:
+      - prometheus_service
+
+# networks:
+#   samurai:
+#     external:
+#       name: samurai

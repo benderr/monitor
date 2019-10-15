@@ -6,6 +6,7 @@ services:
         context: ./logger
     image: prometheus_service
     container_name: prometheus_service
+    network_mode: "host"
     #networks:
     #  - samurai
     ports:
